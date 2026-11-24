@@ -4,7 +4,7 @@ import {
     DEFAULT_COMMUTE_MINUTES,
     HEATMAP_GROUPS,
     TAGS_BY_CATEGORY,
-} from './filterOptions';
+} from './filterOptions.js';
 
 export interface ViewState {
     tags: string[];

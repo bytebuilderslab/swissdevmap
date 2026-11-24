@@ -1,8 +1,8 @@
 import type { Company } from '../store/mapStore';
-import { companyPath } from './paths';
-import type { PageMeta } from './pageMeta';
-import { escapeHtml, SITE_NAME } from './pageMeta';
-import { slugify, tagSlug } from './slug';
+import { companyPath } from './paths.js';
+import type { PageMeta } from './pageMeta.js';
+import { escapeHtml, SITE_NAME } from './pageMeta.js';
+import { slugify, tagSlug } from './slug.js';
 
 /** A page needs at least this many companies; thinner slices would be near-empty indexable pages. */
 export const MIN_COMPANIES = 3;

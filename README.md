@@ -121,7 +121,7 @@ swissdevmap/
 
 ### Prerequisites
 
-- **Node.js** ≥ 18
+- **Node.js** 26 (see `.nvmrc`). Vercel builds and runs the frontend API functions on Node.js 24.15 or later in the 24.x line.
 - **Docker** (for the local Postgres database)
 - A free **Mapbox token** — get one at [account.mapbox.com](https://account.mapbox.com) *(used for geocoding in the commute filter)*
 

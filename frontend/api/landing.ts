@@ -1,12 +1,10 @@
-import { landingBodyHtml, landingMeta, parseLandingPath, resolveLanding } from '../src/lib/landing';
-import { DEFAULT_META, injectPage } from '../src/lib/pageMeta';
+import { landingBodyHtml, landingMeta, parseLandingPath, resolveLanding } from '../src/lib/landing.js';
+import { DEFAULT_META, injectPage } from '../src/lib/pageMeta.js';
 import type { Company } from '../src/store/mapStore';
-import { apiBase, fetchJson } from './_upstream';
+import { apiBase, fetchJson } from './_upstream.js';
 
 // Serves /tech/:tag, /city/:city and /tech/:tag/city/:city. The body is the same content the SPA
 // renders, so crawlers and people see one page. Thin slices redirect to their widest valid parent.
-
-export const config = { runtime: 'edge' };
 
 async function template(request: Request, origin: string): Promise<string> {
     // Deployment protection on previews guards the self-fetch too, so pass the caller's credentials on.
@@ -18,7 +16,7 @@ async function template(request: Request, origin: string): Promise<string> {
     return fetch(`${origin}/index.html`, { headers }).then((res) => res.text());
 }
 
-export default async function handler(request: Request): Promise<Response> {
+async function handler(request: Request): Promise<Response> {
     const url = new URL(request.url);
     const tag = url.searchParams.get('tag');
     const city = url.searchParams.get('city');
@@ -56,3 +54,5 @@ export default async function handler(request: Request): Promise<Response> {
         headers: { ...htmlHeaders, 'cache-control': 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400' },
     });
 }
+
+export default { fetch: handler };

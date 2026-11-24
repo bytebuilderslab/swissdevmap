@@ -1,6 +1,6 @@
 # AGENTS.md
 
-SwissDevMap: an interactive map of the Swiss tech ecosystem. npm workspaces: `backend/` (Express, PostgreSQL, scrapers) and `frontend/` (React, Vite, Vercel edge functions in `frontend/api/`). Read `docs/getting-started.md` and `docs/overview.md` first.
+SwissDevMap: an interactive map of the Swiss tech ecosystem. npm workspaces: `backend/` (Express, PostgreSQL, scrapers) and `frontend/` (React, Vite, Vercel Node.js functions in `frontend/api/`). Read `docs/getting-started.md` and `docs/overview.md` first.
 
 ## Toolchain
 

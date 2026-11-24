@@ -1,14 +1,12 @@
-import { landingPaths } from '../src/lib/landing';
-import { companyPath } from '../src/lib/paths';
-import { buildSitemap } from '../src/lib/sitemap';
+import { landingPaths } from '../src/lib/landing.js';
+import { companyPath } from '../src/lib/paths.js';
+import { buildSitemap } from '../src/lib/sitemap.js';
 import type { Company } from '../src/store/mapStore';
-import { apiBase, fetchJson } from './_upstream';
+import { apiBase, fetchJson } from './_upstream.js';
 
 // Built from the live company list and cached at the edge, so new companies appear within the hour.
 
-export const config = { runtime: 'edge' };
-
-export default async function handler(): Promise<Response> {
+async function handler(): Promise<Response> {
     const base = apiBase();
     const companies = base
         ? await fetchJson<Company[]>(`${base}/api/companies`)
@@ -24,3 +22,5 @@ export default async function handler(): Promise<Response> {
         },
     });
 }
+
+export default { fetch: handler };

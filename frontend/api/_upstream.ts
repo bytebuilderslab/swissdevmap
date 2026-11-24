@@ -1,6 +1,8 @@
+import { env } from 'node:process';
+
 const UPSTREAM_TIMEOUT_MS = 3000;
 
-export const apiBase = (): string => (process.env.VITE_API_URL ?? '').replace(/\/$/, '');
+export const apiBase = (): string => (env.VITE_API_URL ?? '').replace(/\/$/, '');
 
 /** null on any failure, so callers can fall back to default content instead of erroring. */
 export async function fetchJson<T>(url: string): Promise<T | null> {

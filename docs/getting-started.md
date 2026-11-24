@@ -10,7 +10,7 @@ title: Getting Started
 
 Before setting up swissdevmap, ensure you have the following installed:
 
-- **Node.js** (v18 or later recommended)
+- **Node.js** 26 (see `.nvmrc`)
 - **npm** or a compatible package manager
 - **PostgreSQL** — the backend uses a connection pool (`pg`) for all database operations
 
