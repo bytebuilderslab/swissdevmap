@@ -1,5 +1,5 @@
-import { companyPath } from './paths';
-import { ViewState, viewKey } from './viewUrl';
+import { companyPath } from './paths.js';
+import { ViewState, viewKey } from './viewUrl.js';
 
 // The apex domain 307-redirects to www, so www is the address crawlers should treat as canonical.
 export const SITE_URL = 'https://www.swissdevmap.ch';

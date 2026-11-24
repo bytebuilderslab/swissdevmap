@@ -1,4 +1,4 @@
-import { escapeHtml, SITE_URL } from './pageMeta';
+import { escapeHtml, SITE_URL } from './pageMeta.js';
 
 /** One <url> per path, absolute against SITE_URL. Duplicates are dropped; order is kept. */
 export function buildSitemap(paths: string[]): string {

@@ -1,13 +1,11 @@
-import { companyMeta, DEFAULT_META, injectPage, PageMeta, viewMeta } from '../src/lib/pageMeta';
-import { parseView } from '../src/lib/viewUrl';
-import { apiBase, fetchJson } from './_upstream';
+import { companyMeta, DEFAULT_META, injectPage, PageMeta, viewMeta } from '../src/lib/pageMeta.js';
+import { parseView } from '../src/lib/viewUrl.js';
+import { apiBase, fetchJson } from './_upstream.js';
 
 // Serves index.html with <head> tags and, for companies, readable content for the requested URL.
 // Crawlers don't run the SPA, so this is what makes a pasted link unfurl with a real title and
 // image, and what lets a company page be indexed. vercel.json routes /company/:ref and filtered
 // `/?tag=…` URLs here; everything else stays static.
-
-export const config = { runtime: 'edge' };
 
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
@@ -29,7 +27,7 @@ async function describeView(url: URL, base: string): Promise<PageMeta> {
     return viewMeta(view, companies ? companies.length : null);
 }
 
-export default async function handler(request: Request): Promise<Response> {
+async function handler(request: Request): Promise<Response> {
     const url = new URL(request.url);
     const base = apiBase();
     const ref = url.searchParams.get('ref');
@@ -72,3 +70,5 @@ export default async function handler(request: Request): Promise<Response> {
         },
     });
 }
+
+export default { fetch: handler };

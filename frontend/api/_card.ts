@@ -1,3 +1,5 @@
+import { createElement, type ReactNode } from 'react';
+
 export const WIDTH = 1200;
 export const HEIGHT = 630;
 const MAX_TITLE = 90;
@@ -9,11 +11,8 @@ const clip = (value: string | null, max: number, fallback: string) => {
     return text.length > max ? `${text.slice(0, max - 1)}…` : text;
 };
 
-// satori takes plain element objects, which keeps JSX out of the serverless bundle.
-const h = (type: string, style: Record<string, string | number>, children?: unknown) => ({
-    type,
-    props: { style: { display: 'flex', ...style }, children },
-});
+const h = (type: string, style: Record<string, string | number>, children?: ReactNode) =>
+    createElement(type, { style: { display: 'flex', ...style } }, children);
 
 // Deterministic scatter of "company" dots so the card reads as a map without shipping tiles.
 const DOTS = Array.from({ length: 28 }, (_, i) => ({
@@ -34,7 +33,7 @@ export function buildCard(searchParams: URLSearchParams) {
 
     return h('div', {
         width: '100%', height: '100%', position: 'relative', background: '#080c14', color: '#e8edf5',
-        fontFamily: 'sans-serif',
+        fontFamily: 'Geist',
     }, [
         ...DOTS.map((dot) => h('div', {
             position: 'absolute', left: dot.x, top: dot.y, width: dot.r * 2, height: dot.r * 2,
